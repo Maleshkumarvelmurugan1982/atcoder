@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of test cases:");
+        int t = sc.nextInt();
+        while (t--> 0) {
+            System.out.println("Enter the size of the array:");
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = 2 * i + 1;
+            }
+            for (int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+            int total = n + (n - 1);
+            int[] all = new int[total];
+            int d = 0;
+            for (int i = 0; i < n; i++) {
+                all[d] = arr[i];
+                d++;
+            }
+            for (int i = 0; i < n - 1; i++) {
+                all[d] = arr[i] + arr[i+1];
+                d++;
+            }
+            boolean isunique = true;
+            for (int i = 0; i < total; i++) {
+                for (int j = i + 1; j < total; j++) {
+                    if (all[i] == all[j]) {
+                        isunique = false;
+                    }
+                }
+            }
+            if (isunique) {
+                System.out.println("Status: Valid");
+            } else {
+                System.out.println("Status: Invalid");
+            }
+            System.out.println();
+        }
+    }
+}
