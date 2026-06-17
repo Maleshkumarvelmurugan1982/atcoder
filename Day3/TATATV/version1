@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t > 0) {
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
+            String s = scanner.next();
+            int[] onesCount = new int[k];
+            for (int i = 0; i < n; i++) {
+                if (s.charAt(i) == '1') {
+                    onesCount[i % k]++;
+                }
+            }
+            boolean possible = true;
+            for (int i = 0; i < k; i++) {
+                if (onesCount[i] % 2 != 0) {
+                    possible = false;
+                    break;
+                }
+            }
+            if (possible) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+            t--;
+        }
+    }
+}
