@@ -1,0 +1,19 @@
+import java.util.*;
+class  Main
+{
+public static void main (String[] args) 
+  {
+   Scanner in = new Scanner(System.in);
+   String a = in.nextLine();
+   int d = Integer.parseInt(a, 2);
+   int c = Integer.bitCount(d);
+   if(c%2==0)
+   {
+    System.out.println("YES");
+   }
+   else
+   {
+    System.out.println("NO");
+   }
+  }
+}
