@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.HashSet;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        long count = 0;
+        HashSet<Long> set1 = new HashSet<>();
+        long target = n - 1;
+        for (long i = 2; i * i <= target; i++) {
+          if (target % i == 0) {
+            set1.add(i);
+            set1.add(target / i);
+          }
+        }
+        if (target >= 2) {
+          set1.add(target);
+        }
+        for (long i = 2; i * i <= n; i++) {
+          if (n % i == 0) {
+            long k = i;
+            long temp = n;
+            while (temp % k == 0) {
+              temp = temp / k;
+            }
+            if (temp % k == 1) {
+              set1.add(k);
+            }
+            k = n / i;
+            temp = n;
+            while (temp % k == 0) {
+              temp = temp / k;
+            }
+            if (temp % k == 1) {
+              set1.add(k);
+            }
+          }
+        }
+        set1.add(n);
+        count = set1.size();
+        System.out.println(count);
+    }
+}
