@@ -1,0 +1,26 @@
+import java.util.*;
+public class Main{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    double[] p=new double[n+1];
+    for(int i=1;i<=n;i++){
+      p[i]=sc.nextDouble();
+    }
+    double[] p1=new double[n+1];
+    p1[0]=1.0;
+    for(int i=1;i<=n;i++){
+      for(int j=i;j>=0;j--){
+        double hp=(j>0)?p1[j-1]*p[i]:0;
+        double tp=p1[j]*(1-p[i]);
+        p1[j]=hp+tp;
+      }
+    }
+    double tps=0;
+    for(int j=(n/2)+1;j<=n;j++){
+      tps+=p1[j];
+    }
+    System.out.printf("%.10f\n",tps);
+    
+  }
+}
